@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-#imi8v^@7n20v@6)nx8q$!$it%nd6%b-@$#xq00t8c7i3e_v-r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -48,10 +48,13 @@ INSTALLED_APPS = [
     "apps.admin_panel",
     'rest_framework',
     'rest_framework_simplejwt',
+    "corsheaders",
+
 ]
 AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'TaskHive.urls'
 
